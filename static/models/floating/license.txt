@@ -1,0 +1,11 @@
+Model Information:
+* title:	Floating Lighthouse
+* source:	https://sketchfab.com/3d-models/floating-lighthouse-323851f10fd7483aa803594767ba693a
+* author:	Kathrin&Christian (https://sketchfab.com/extracrispi)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Floating Lighthouse" (https://sketchfab.com/3d-models/floating-lighthouse-323851f10fd7483aa803594767ba693a) by Kathrin&Christian (https://sketchfab.com/extracrispi) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

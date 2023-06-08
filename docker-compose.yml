@@ -1,0 +1,27 @@
+version: '3'
+services:
+  sveltekit:
+    image: svelte-docker-node
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deploy-node
+    networks:
+      - traefik-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sveltekit.rule=Host(`cadocuir.com`)"
+      - "traefik.http.routers.sveltekit.entrypoints=http"
+      - "traefik.http.routers.sveltekit-secure.rule=Host(`cadocuir.com`)"
+      - "traefik.http.routers.sveltekit-secure.entrypoints=https"
+      - "traefik.http.routers.sveltekit-secure.tls=true"
+      - "entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "entrypoints.web.address=:80"
+      - "entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "entrypoints.web.http.redirections.entrypoint.permanent=true"
+      - "entrypoints.websecure.address=:443"
+      - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"
+
+networks:
+  traefik-net:
+   external: true

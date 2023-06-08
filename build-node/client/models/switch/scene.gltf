@@ -1,0 +1,415 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 3098,
+      "max": [
+        216.77874755859375,
+        101.1591796875,
+        47.0142707824707
+      ],
+      "min": [
+        -196.2616729736328,
+        -180.56256103515625,
+        -25.91326904296875
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 37176,
+      "componentType": 5126,
+      "count": 3098,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 3098,
+      "max": [
+        0.9836105108261108,
+        0.5840374827384949
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 7704,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 74352,
+      "componentType": 5126,
+      "count": 2398,
+      "max": [
+        772.1688842773438,
+        647.4049682617188,
+        53.904808044433594
+      ],
+      "min": [
+        -772.1688842773438,
+        -647.4049682617188,
+        -275.07073974609375
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 103128,
+      "componentType": 5126,
+      "count": 2398,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -0.9992103576660156
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 24784,
+      "componentType": 5126,
+      "count": 2398,
+      "max": [
+        0.9844611883163452,
+        0.9793559312820435
+      ],
+      "min": [
+        0.00985129177570343,
+        0.012024901807308197
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 30816,
+      "componentType": 5125,
+      "count": 10218,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 131904,
+      "componentType": 5126,
+      "count": 248,
+      "max": [
+        223.03533935546875,
+        220.85182189941406,
+        57.345001220703125
+      ],
+      "min": [
+        -370.10516357421875,
+        -187.73097229003906,
+        -209.14865112304688
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 134880,
+      "componentType": 5126,
+      "count": 248,
+      "max": [
+        0.8565426468849182,
+        0.7659124135971069,
+        1.0
+      ],
+      "min": [
+        -0.8700811862945557,
+        -0.3298816978931427,
+        0.39313173294067383
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 43968,
+      "componentType": 5126,
+      "count": 248,
+      "max": [
+        1.0,
+        0.9784343838691711
+      ],
+      "min": [
+        0.030854225158691406,
+        0.5212205052375793
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 71688,
+      "componentType": 5125,
+      "count": 606,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Mikkel Garde Blaase (https://sketchfab.com/plorigon)",
+      "license": "CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)",
+      "source": "https://sketchfab.com/3d-models/nintendo-switch-diorama-7bafb356e4f34695954da8fa6cd640b4",
+      "title": "Nintendo Switch Diorama"
+    },
+    "generator": "Sketchfab-15.12.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 74112,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 45952,
+      "byteOffset": 74112,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 137856,
+      "byteOffset": 120064,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 257920,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_materials_unlit"
+  ],
+  "images": [
+    {
+      "uri": "textures/BaseCol_baseColor.png"
+    },
+    {
+      "uri": "textures/Opacity_Stuff_baseColor.png"
+    }
+  ],
+  "materials": [
+    {
+      "extensions": {
+        "KHR_materials_unlit": {}
+      },
+      "name": "black_outline",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_unlit": {}
+      },
+      "name": "BaseCol",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0
+      }
+    },
+    {
+      "alphaCutoff": 0.5063644212587175,
+      "alphaMode": "MASK",
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_unlit": {}
+      },
+      "name": "Opacity_Stuff",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicFactor": 0.0
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Outline Mesh.002_black outline_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Outline Mesh.002_BaseCol_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 5,
+            "POSITION": 4,
+            "TEXCOORD_0": 6
+          },
+          "indices": 7,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "Outline Mesh.002_Opacity Stuff_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 9,
+            "POSITION": 8,
+            "TEXCOORD_0": 10
+          },
+          "indices": 11,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        0.9577306509017944,
+        -0.14185751974582678,
+        0.25025674700736994,
+        0.0,
+        0.2603326141834259,
+        0.057286940515041566,
+        -0.9638180136680603,
+        0.0,
+        0.12238838523626328,
+        0.9882280230522156,
+        0.09179559350013755,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "648c5489d1494140b7e3eae5e698df24.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4,
+        5,
+        6
+      ],
+      "name": "Outline Mesh.002"
+    },
+    {
+      "mesh": 0,
+      "name": "Outline Mesh.002_black outline_0"
+    },
+    {
+      "mesh": 1,
+      "name": "Outline Mesh.002_BaseCol_0"
+    },
+    {
+      "mesh": 2,
+      "name": "Outline Mesh.002_Opacity Stuff_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    }
+  ]
+}

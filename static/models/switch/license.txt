@@ -1,0 +1,11 @@
+Model Information:
+* title:	Nintendo Switch Diorama
+* source:	https://sketchfab.com/3d-models/nintendo-switch-diorama-7bafb356e4f34695954da8fa6cd640b4
+* author:	Mikkel Garde Blaase (https://sketchfab.com/plorigon)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Nintendo Switch Diorama" (https://sketchfab.com/3d-models/nintendo-switch-diorama-7bafb356e4f34695954da8fa6cd640b4) by Mikkel Garde Blaase (https://sketchfab.com/plorigon) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
