@@ -16,10 +16,8 @@ services:
       - "traefik.http.routers.cadocuir-secure.entrypoints=https"
       - "traefik.http.routers.cadocuir-secure.tls=true"
       - "entrypoints.web.http.redirections.entryPoint.to=websecure"
-      # - "entrypoints.web.address=:80"
       - "entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "entrypoints.web.http.redirections.entrypoint.permanent=true"
-      # - "entrypoints.websecure.address=:443"
       - "traefik.http.services.cadocuir.loadbalancer.server.port=3000"
 
 networks:
