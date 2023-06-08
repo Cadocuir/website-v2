@@ -1,6 +1,6 @@
 version: '3'
 services:
-  sveltekit:
+  cadocuir:
     image: svelte-docker-node
     build:
       context: .
@@ -10,17 +10,17 @@ services:
       - traefik-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sveltekit.rule=Host(`cadocuir.com`)"
-      - "traefik.http.routers.sveltekit.entrypoints=http"
-      - "traefik.http.routers.sveltekit-secure.rule=Host(`cadocuir.com`)"
-      - "traefik.http.routers.sveltekit-secure.entrypoints=https"
-      - "traefik.http.routers.sveltekit-secure.tls=true"
+      - "traefik.http.routers.cadocuir.rule=Host(`cadocuir.com`)"
+      - "traefik.http.routers.cadocuir.entrypoints=http"
+      - "traefik.http.routers.cadocuir-secure.rule=Host(`cadocuir.com`)"
+      - "traefik.http.routers.cadocuir-secure.entrypoints=https"
+      - "traefik.http.routers.cadocuir-secure.tls=true"
       - "entrypoints.web.http.redirections.entryPoint.to=websecure"
-      - "entrypoints.web.address=:80"
+      # - "entrypoints.web.address=:80"
       - "entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "entrypoints.web.http.redirections.entrypoint.permanent=true"
-      - "entrypoints.websecure.address=:443"
-      - "traefik.http.services.sveltekit.loadbalancer.server.port=3000"
+      # - "entrypoints.websecure.address=:443"
+      - "traefik.http.services.cadocuir.loadbalancer.server.port=3000"
 
 networks:
   traefik-net:
