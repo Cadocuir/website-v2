@@ -2,8 +2,6 @@
 
 import { setting_ldm_store } from '$lib/settings/detailMode.js'
 import { onMount } from 'svelte';
-import { goto, invalidateAll } from "$app/navigation"
-import {page} from '$app/stores'
 import { t,locales, locale, } from '$lib/translations';
 
 
@@ -34,15 +32,7 @@ onMount(_=>{
 <div bind:this={popupPanel} id="popup-settings" class="{popupPanelOpen ? "popup-open" : ""}">
 
     <table>
-        <tr>
-            <td>{$t('common.Setting_LDM')}</td>
-            <td>
-                <label class="switch">
-                    <input bind:this={switchElem} on:click={detailMode} type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-            </td>
-        </tr>
+   
         <tr>
             <td>{$t('common.Setting_Language')}</td>
             <td>
@@ -68,13 +58,13 @@ button{
     width: 16px;
     height: 16px;
     margin: 16px 16px;
-    z-index: 10;
+    z-index: 999;
     cursor: pointer;
     img{
         width: 100%;
         height: 100%;
-        filter: invert(1);
     }
+    z-index: 15;
 }
 
 
