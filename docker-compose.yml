@@ -10,7 +10,7 @@ services:
       - traefik-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cadocuir.rule=Host(`www.cadocuir.com`, `cadocuir.com`	)"
+      - "traefik.http.routers.cadocuir.rule=Host(`www.cadocuir.com`, `cadocuir.com`)"
       - "traefik.http.routers.cadocuir.entrypoints=http"
       - "traefik.http.routers.cadocuir-secure.rule=Host(`www.cadocuir.com`,`cadocuir.com`)"
       - "traefik.http.routers.cadocuir-secure.entrypoints=https"
@@ -19,7 +19,7 @@ services:
       - "entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "traefik.http.services.cadocuir.loadbalancer.server.port=3000"
-      - "traefik.http.routers.cadocuir.middlewares: redirect-non-www-to-www@file"
+      - "traefik.http.routers.cadocuir.middlewares:'redirect-non-www-to-www@file'"
 
 networks:
   traefik-net:
