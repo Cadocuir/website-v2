@@ -74,6 +74,23 @@
 	}
 </script>
 
+
+<svelte:head>
+
+    <title>{$t('home.title')}</title>
+    <meta name="description" content="{$t('home.meta-description')}">
+    <meta name="keywords" content="{$t('home.meta-keywords')}">
+    <meta name="author" content="{$t('home.meta-author')}">
+    <link rel="icon" href="/favicon.ico" />
+    <meta property="og:description" content="{$t('home.meta-description')}">
+    <meta property="og:title" content="{$t('home.title')}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.cadocuir.com" />
+    <meta property="og:image" content="/images/cadocuir-bg.jpg" />
+    <meta property="og:site_name" content="CADOCUIR, maroquinerie bagagerie" />
+    
+</svelte:head>
+
 <div on:mousemove={mouseMoving} id="top">
 	<div id="paralax">
 		<img src="/images/cadocuir-1.webp" alt="cadocuir entrée" />
