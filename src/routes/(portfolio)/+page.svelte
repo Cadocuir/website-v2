@@ -102,6 +102,13 @@
 		<H1 innerText={$t('home.titre')} />
 		<p>{$t('home.sous-titre')}</p>
 	</div>
+
+
+    <div class="scroll-down">
+        <a href="#informations">
+            <img src="/images/shopping-bag.png" alt="scroll down" />
+        </a>
+    </div>
 </div>
 
 <div class="giga-container" id="informations">
@@ -361,5 +368,31 @@
 
     p:not(.title p){
         visibility: hidden;
+    }
+
+    .scroll-down{
+
+
+        position: absolute;
+        bottom: 0;
+
+        img{
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
     }
 </style>
