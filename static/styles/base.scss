@@ -6,3 +6,9 @@ html {
 strong{
     font-weight: bold;
 }
+
+p{
+    @media #{$media-mobile} {
+        text-align: justify;
+    }
+}
