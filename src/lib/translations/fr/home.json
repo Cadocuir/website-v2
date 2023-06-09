@@ -2,5 +2,22 @@
     "titre":"CADOCUIR",
     "sous-titre":"Votre bagagerie",
     "informations": "Informations",
-    "map": "Carte"
+    "map": "Carte",
+    "horaires": "horaires",
+    "horaires-exception":"Les horaires peuvent varier en fonction des jours fériés et des évènements. Renseignez-vous auprès de votre magasin pour plus d'informations.",
+    "ferme": "Fermé",
+    "lundi": "Lundi",
+    "mardi": "Mardi",
+    "mercredi": "Mercredi",
+    "jeudi": "Jeudi",
+    "vendredi": "Vendredi",
+    "samedi": "Samedi",
+    "dimanche": "Dimanche",
+    "informations-title": "Plus d'informations",
+    "informations-desc-1": "Bienvenue chez Cadocuir, la référence en matière de maroquinerie et bagagerie de luxe à Albertville !",
+    "informations-desc-2": "Située au 67 rue de la République, notre boutique offre une sélection exquise des marques les plus prestigieuses, ainsi qu'un service incomparable pour satisfaire les exigences des clients les plus exigeants.",
+    "informations-desc-3": "Chez Cadocuir, nous croyons en l'importance d'offrir à nos clients une expérience de shopping unique, où le luxe et le service se rencontrent pour créer une atmosphère exclusive. Notre équipe de passionnés de la maroquinerie est dévouée à vous guider dans votre quête du sac parfait, de la valise idéale ou des accessoires de voyage haut de gamme.",
+    "informations-desc-4": "Nous sommes fiers de présenter un portefeuille exceptionnel de marques de renommée internationale. Découvrez l'élégance intemporelle de Longchamp, l'audace sportive de Lacoste, le style contemporain de Guess et la sophistication raffinée de Lancaster. Vous trouverez également des pièces de qualité supérieure de Samsonite, Eastpak, Nat et Nin, Sabrina, Fuchsia, Biba, Kipling, Les Ateliers Fourès, Jump, Dakine, Herschel, Serge Blanco, Gérard Hénon, Isotoner, Miss-Kha, Ogon Designs, Alaskan Maker, Les Bretelles de Léon, Guy de Jean, Chantal Thomass et Jean-Paul Gaultier.",
+    "informations-desc-5": "Chez Cadocuir, nous comprenons que chaque client est unique, c'est pourquoi notre équipe dévouée se tient à votre disposition pour vous offrir un service personnalisé. Nous sommes là pour répondre à toutes vos questions, vous conseiller sur les dernières tendances et vous aider à choisir le produit qui correspond le mieux à vos besoins et à votre style. Que vous recherchiez un sac à main pour compléter une tenue de soirée ou une valise résistante pour vos voyages d'affaires, nous nous engageons à vous offrir un service exceptionnel à chaque étape de votre parcours d'achat. "
+
 }

@@ -10,11 +10,29 @@
     let img2Elem;
     let img3Elem;
 
-    onMount(_=>{
+    onMount(async _=>{
         
-       let map = L.map('map').setView([45.675, 6.39], 13);
+        if(browser){
+            const module = await import('leaflet');
+		    const L = module.default;
+            
+            let map = L.map('map',{
+                center: [45.67594775933373, 6.389657607867016],
+                zoom: 15,
+                scrollWheelZoom: false
+            });
 
-    })
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([45.67594775933373, 6.389657607867016]).addTo(map)
+                .bindPopup('<strong>Cadocuir Maroquinerie</strong><br>67 rue de la république 73200 Albertville')
+                .openPopup();
+        }
+
+
+        })
 
     function mouseMoving(e){
 
@@ -29,21 +47,14 @@
 
 </script>
 
-<!-- 
-<svelte:head>
-    {#if browser}
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
-            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    {/if}
-</svelte:head> -->
 
 <div on:mousemove={mouseMoving} id="top">
 
 
     <div id="paralax">
-        <img src="/images/cadocuir-1.png" alt="full" />
-        <img bind:this={img2Elem} style="left:15px" src="/images/cadocuir-2.png" alt="full" />
-        <img bind:this={img3Elem} style="left:-15px" src="/images/cadocuir-3.png" alt="full" />
+        <img src="/images/cadocuir-1.webp" alt="cadocuir entrée" />
+        <img bind:this={img2Elem} style="left:15px" src="/images/cadocuir-2.webp" alt="longchamps" />
+        <img bind:this={img3Elem} style="left:-15px" src="/images/cadocuir-3.webp" alt="portefeuils" />
     </div>
 
     <div class="title">
@@ -86,21 +97,80 @@
 </div>
 
 
-<div  class="giga-container">
 
-    <div class="content-block">
-        <div class="block-100">
-         
-            <div id="map"></div>
+
+<div class="giga-container" id="horaires">
+
+    <div class="center"><h2 class="h2-title " data-traduction="Home-horaires-Title" data-upper="true">{$t('home.horaires')}</h2></div>
+    
+   
+   
+
+        <div class="horaires-wrapper">
+
+            <table>
+                <tr>
+                    <td>{$t('home.lundi')}</td>
+                    <td>{$t('home.ferme')}</td>
+                </tr>
+                <tr>
+                    <td>{$t('home.mardi')}</td>
+                    <td>09:30–19:00</td>
+                </tr>
+                <tr>
+                    <td>{$t('home.mercredi')}</td>
+                    <td>09:30–19:00</td>
+                </tr>
+                <tr>
+                    <td>{$t('home.jeudi')}</td>
+                    <td>09:30–19:00</td>
+                </tr>
+                <tr>
+                    <td>{$t('home.vendredi')}</td>
+                    <td>09:30–19:00</td>
+                </tr>
+                <tr>
+                    <td>{$t('home.samedi')}</td>
+                    <td>09:30–19:00</td>
+                </tr>
+                <tr>
+                    <td>{$t('home.dimanche')}</td>
+                    <td>{$t('home.ferme')}</td>
+                </tr>
+            </table>
+        
+                <p>
+                    <a href="https://www.google.com/search?q=cadocuir+albertville+horaires" target="_blank">
+                        {$t('home.horaires-exception')}
+                    </a>
+                </p>
+          
         </div>
-        <h2 class="h2-title " data-traduction="Home-Info-Title" data-upper="true">{$t('home.map')}</h2>
-       
-      </div>
 
+
+   
+    
+  
 
 </div>
 
+<div id="map"></div>
 
+
+<div class="giga-container" id="informations">
+
+    <div class="center"><h2 class="h2-title " data-traduction="Home-horaires-Title" data-upper="true">{$t('home.informations-title')}</h2></div>
+    <div class="block-100">  <p>{$t('home.informations-desc-1')}</p>
+    
+    
+        <p>{$t('home.informations-desc-2')}</p>
+        <p>{$t('home.informations-desc-3')}</p>
+        <p>{$t('home.informations-desc-4')}</p>
+        <p>{$t('home.informations-desc-5')}</p>
+    </div>
+  
+
+</div>
 
 <style lang="scss">
 
@@ -145,7 +215,7 @@
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 20px;
+        height: 5px;
 
     }
 }
@@ -182,36 +252,7 @@
             margin: 0;
         }
 
-        .h2-title {
-
-            color:$color-darkblue;
-            font-family: $font-family-main;
-            font-size: 3rem;
-            border-bottom: 8px solid $color-primary;
-            width: fit-content;
-            line-height: 2.8rem;
-            letter-spacing: 0.8rem;
-            margin: 16px;
-        }
-
-        .block-100{
-
-
-            font-family: $font-family-secondary;
-
-            p{
-                font-size: 1.5rem;
-                margin: 8px;
-                padding: 8px;
-                color: $color-darkblue;
-            }
-
-            a{
-  	            text-decoration-color: $color-primary;
-            }
-        }
-
-
+        
         .block-logo{
 
             img{
@@ -224,9 +265,89 @@
     }
 
 }
+
+
+.h2-title {
+
+    color:$color-darkblue;
+    font-family: $font-family-main;
+    font-size: 3rem;
+    border-bottom: 8px solid $color-primary;
+    width: fit-content;
+    line-height: 2.8rem;
+    letter-spacing: 0.8rem;
+    margin: 16px;
+}
+
+.block-100{
+
+
+    font-family: $font-family-secondary;
+
+    p{
+        font-size: 1.5rem;
+        margin: 8px;
+        padding: 8px;
+        color: $color-darkblue;
+    }
+
+   
+}
+
+a{
+        text-decoration-color: $color-primary;
+        color: $color-darkblue;
+}
+
+#horaires{
+
+    .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .h2-title {
+
+        //margin: 20px 96px;
+        }
+    }
+
+   
+
+    .horaires-wrapper{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-family: $font-family-secondary;
+            table{
+            margin: 32px;
+            border-collapse: unset;
+            border-spacing: unset;
+            tr{
+                td{
+                    padding: 8px 16px;
+                }
+            }
+
+         
+        }
+        p{
+                margin: 0 20%;
+            }
+    }
+}
+
+
 #map{
-    width: 50vw;
-    height: 50vh;
+    width: 100%;
+    height: 70vh;
+    box-shadow: -3px -3px 7px #ffffffa6, 3px 3px 5px rgba(94, 104, 121, 0.712);
+}
+
+#informations{
+    p{
+        font-size: 1.2rem;
+    }
 }
 
 #paralax{

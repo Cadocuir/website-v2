@@ -2,5 +2,15 @@
     "titre":"CADOCUIR",
     "sous-titre":"Your leather goods",
     "informations": "Informations",
-    "map": "Map"
+    "map": "Map",
+    "horaires": "Opening hours",
+    "horaires-exception":"Hours may change depending on holidays and events. Ask your store for more information.",
+    "ferme": "Closed",
+    "lundi": "Monday",
+    "mardi": "Tuesday",
+    "mercredi": "Wednesday",
+    "jeudi": "Thursday",
+    "vendredi": "Friday",
+    "samedi": "Saturday",
+    "dimanche": "Sunday",
 }

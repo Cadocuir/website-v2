@@ -5,7 +5,7 @@
     import gsap from 'gsap/dist/gsap.min.js';
     import ScrollTrigger  from 'gsap/dist/ScrollTrigger';
     onMount(_=>{
-        gsap.registerPlugin(ScrollTrigger,SplitText);
+        gsap.registerPlugin(ScrollTrigger);
         
 
         const tl = gsap.timeline({
@@ -19,7 +19,6 @@
                 refreshPriority: 1,
             }
         });
-        // let splitTitle =  new SplitText("h1", {type:"chars, words"})
         tl.fromTo( "h1", {
             y: -16,
         },{

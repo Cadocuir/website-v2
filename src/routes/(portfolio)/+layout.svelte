@@ -4,7 +4,7 @@
 <script>
     import {page} from '$app/stores'
     import Header from '$lib/components/Header.svelte'
-
+    import Footer from '$lib/components/Footer.svelte'
 </script>
 
 <svelte:head>
@@ -18,6 +18,8 @@
 	<main>
 		<slot />
 	</main>
+    
+    <Footer />
 
 </div>
 
