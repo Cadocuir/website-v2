@@ -368,7 +368,11 @@
 
     p:not(.title p){
         visibility: hidden;
+        @media #{$media-mobile} {
+            text-align: justify;
+        }
     }
+  
 
     .scroll-down{
 

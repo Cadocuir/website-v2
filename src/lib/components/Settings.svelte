@@ -1,29 +1,16 @@
 <script>
 
-import { setting_ldm_store } from '$lib/settings/detailMode.js'
-import { onMount } from 'svelte';
 import { t,locales, locale, } from '$lib/translations';
 
 
 let popupPanel;
 let popupPanelOpen = false;
 
-let switchElem;
-
 function togglePopupPanel(){
     popupPanelOpen = !popupPanelOpen;
   
 }
-function detailMode(){
-    $setting_ldm_store = switchElem.checked ? "1" : ""
-}
 
-onMount(_=>{
-
-    switchElem.checked = $setting_ldm_store.length > 0 ? true : false; 
-
-
-})
 
 </script>
 
@@ -65,70 +52,6 @@ button{
         height: 100%;
     }
     z-index: 15;
-}
-
-
-/* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 48px;
-    height: 16px;
-   
-
-    input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: $color-light;
-        -webkit-transition: .4s;
-        transition: .4s;
-        
-        &::before{
-        position: absolute;
-        content: "";
-        height: 12px;
-        width: 12px;
-        left: 2px;
-        bottom: 2px;
-        background-color:  $color-darkblue;
-        -webkit-transition: .4s;
-        transition: .4s;
-        }
-
-        &.round{
-            border-radius: 34px;
-            &::before{
-                border-radius: 50%;
-            }
-        }
-    }
-
-
-input:checked + .slider {
-  background-color: $color-light;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px $color-light;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(32px);
-  -ms-transform: translateX(32px);
-  transform: translateX(32px);
-  background-color: $color-primary;
-}
-
 }
 
 
