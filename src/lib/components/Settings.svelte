@@ -51,7 +51,6 @@ button{
         width: 100%;
         height: 100%;
     }
-    z-index: 15;
 }
 
 
@@ -63,7 +62,7 @@ button{
     background-color: rgba($color-darkblue, 0.7) ;
     backdrop-filter: brightness(1.5) blur(4px);
     margin:32px;
-    z-index: 20;
+    z-index: 999;
     padding: 16px;
     box-shadow: 3px 3px 10px -5px #000000;
     opacity: 0;

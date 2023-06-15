@@ -98,6 +98,11 @@
 		<img bind:this={img3Elem} style="left:-15px" src="/images/cadocuir-3.webp" alt="portefeuils" />
 	</div>
 
+	<div>
+		<div class="logo-top">
+			<img src="/images/cadocuircro.png" alt="logo cadocuir" />
+		</div>
+	</div>
 	<div class="title">
 		<H1 innerText={$t('home.titre')} />
 		<p>{$t('home.sous-titre')}</p>
@@ -115,7 +120,7 @@
 	<div class="content-block">
         <H2 innerText={$t('home.informations')} />
 		<div class="block-100">
-			<p data-traduction="Home-Info-Desc-Name">Maroquinerie Bagagerie Maniglier</p>
+			<p data-traduction="Home-Info-Desc-Name">Maroquinerie Bagagerie Cadocuir</p>
 			<p data-traduction="Home-Info-Desc-Adresse">67 rue de la république 73200 Albertville</p>
 			<a class="link-decoration" href="tel:+33479320026">
 				<p data-traduction="Home-Info-Desc-Tel">04 79 32 00 26</p>
@@ -209,6 +214,21 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
+		z-index: 100;
+
+		.logo-top{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+
+			img{
+				
+			    width: 20rem;
+				height: 20rem;
+				object-fit: contain;
+			}
+		}
 
 		.title {
 			background-color: rgba($color-darkblue, 0.7);
@@ -381,8 +401,8 @@
         bottom: 0;
 
         img{
-            width: 100px;
-            height: 100px;
+            width: 6rem;
+            height: 6rem;
             object-fit: contain;
             animation: bounce 2s infinite;
         }
