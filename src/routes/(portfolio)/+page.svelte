@@ -100,7 +100,7 @@
 
 	<div>
 		<div class="logo-top">
-			<img src="/images/cadocuircro.png" alt="logo cadocuir" />
+			<img src="/images/cadocuircro.webp" alt="logo cadocuir" />
 		</div>
 	</div>
 	<div class="title">
