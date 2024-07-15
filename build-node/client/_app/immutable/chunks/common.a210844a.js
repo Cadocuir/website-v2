@@ -1,1 +1,0 @@
-const e="Homepage default",t="en",o="English",n="Homepage",a="About",g="Projects",c="Low detail mode",s="Change language",u={titre:e,code:t,language:o,homepage:n,about:a,projects:g,Setting_LDM:c,Setting_Language:s};export{c as Setting_LDM,s as Setting_Language,a as about,t as code,u as default,n as homepage,o as language,g as projects,e as titre};

@@ -1,7 +1,7 @@
 <script>
 	import { setting_ldm_store } from '$lib/settings/detailMode.js';
 	import H1 from '$lib/components/H1.svelte';
-    import H2 from '$lib/components/H2.svelte';
+	import H2 from '$lib/components/H2.svelte';
 	import { t } from '$lib/translations';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
@@ -33,35 +33,32 @@
 				.openPopup();
 		}
 
+		gsap.registerPlugin(ScrollTrigger);
 
-        gsap.registerPlugin(ScrollTrigger);
-        
-
-        document.querySelectorAll("p:not(.title p)").forEach(pElem =>{
-
-            const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: pElem,
-                markers: false,
-                start: 'top +=85%',
-                end: 'center +=65%',
-                once: true,
-            }
-            });
-            tl.fromTo( pElem, {
-                x: -100,
-            },{
-                x: 0,
-                ease: "power2.out",
-                duration: 0.3,
-                autoAlpha: 1,
-                stagger:0.1,
-            });
-        })
-     
-
-
-
+		document.querySelectorAll('p:not(.title p)').forEach((pElem) => {
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: pElem,
+					markers: false,
+					start: 'top +=85%',
+					end: 'center +=65%',
+					once: true
+				}
+			});
+			tl.fromTo(
+				pElem,
+				{
+					x: -100
+				},
+				{
+					x: 0,
+					ease: 'power2.out',
+					duration: 0.3,
+					autoAlpha: 1,
+					stagger: 0.1
+				}
+			);
+		});
 	});
 
 	function mouseMoving(e) {
@@ -74,21 +71,18 @@
 	}
 </script>
 
-
 <svelte:head>
-
-    <title>{$t('home.title')}</title>
-    <meta name="description" content="{$t('home.meta-description')}">
-    <meta name="keywords" content="{$t('home.meta-keywords')}">
-    <meta name="author" content="{$t('home.meta-author')}">
-    <link rel="icon" href="/favicon.ico" />
-    <meta property="og:description" content="{$t('home.meta-description')}">
-    <meta property="og:title" content="{$t('home.title')}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://www.cadocuir.com" />
-    <meta property="og:image" content="/images/cadocuir-bg.jpg" />
-    <meta property="og:site_name" content="CADOCUIR, maroquinerie bagagerie" />
-    
+	<title>{$t('home.title')}</title>
+	<meta name="description" content={$t('home.meta-description')} />
+	<meta name="keywords" content={$t('home.meta-keywords')} />
+	<meta name="author" content={$t('home.meta-author')} />
+	<link rel="icon" href="/favicon.ico" />
+	<meta property="og:description" content={$t('home.meta-description')} />
+	<meta property="og:title" content={$t('home.title')} />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://www.cadocuir.com" />
+	<meta property="og:image" content="/images/cadocuir-bg.jpg" />
+	<meta property="og:site_name" content="CADOCUIR, maroquinerie bagagerie" />
 </svelte:head>
 
 <div on:mousemove={mouseMoving} id="top">
@@ -108,17 +102,16 @@
 		<p>{$t('home.sous-titre')}</p>
 	</div>
 
-
-    <div class="scroll-down">
-        <a href="#informations">
-            <img src="/images/shopping-bag.png" alt="scroll down" />
-        </a>
-    </div>
+	<div class="scroll-down">
+		<a href="#informations">
+			<img src="/images/shopping-bag.png" alt="scroll down" />
+		</a>
+	</div>
 </div>
 
 <div class="giga-container" id="informations">
 	<div class="content-block">
-        <H2 innerText={$t('home.informations')} />
+		<H2 innerText={$t('home.informations')} />
 		<div class="block-100">
 			<p data-traduction="Home-Info-Desc-Name">Maroquinerie Bagagerie Cadocuir</p>
 			<p data-traduction="Home-Info-Desc-Adresse">67 rue de la république 73200 Albertville</p>
@@ -146,12 +139,50 @@
 
 <div class="giga-container" id="horaires">
 	<div class="center">
-        <H2 innerText={$t('home.horaires')} />
-		
+		<H2 innerText={$t('home.horaires')} />
+	</div>
+
+	
+
+	<div class="center">
+		<h3>NOS HORAIRES D'ETE Du 15.07.2024 au 11.08.2024</h3>
 	</div>
 
 	<div class="horaires-wrapper">
+
+		
 		<table>
+			<tr>
+				<td>{$t('home.lundi')}</td>
+				<td>14:00-19:00</td>
+			</tr>
+			<tr>
+				<td>{$t('home.mardi')}</td>
+				<td>9h30-12h30 / 14h-19h</td>
+			</tr>
+			<tr>
+				<td>{$t('home.mercredi')}</td>
+				<td>9h30-12h30 / 14h-19h</td>
+			</tr>
+			<tr>
+				<td>{$t('home.jeudi')}</td>
+				<td>9h30-12h30 / 14h-19h</td>
+			</tr>
+			<tr>
+				<td>{$t('home.vendredi')}</td>
+				<td>9h30-12h30 / 14h-19h</td>
+			</tr>
+			<tr>
+				<td>{$t('home.samedi')}</td>
+				<td>9h30-12h30 / 14h-19h</td>
+			</tr>
+			<tr>
+				<td>{$t('home.dimanche')}</td>
+				<td>{$t('home.ferme')}</td>
+			</tr>
+		</table>
+
+		<!-- <table>
 			<tr>
 				<td>{$t('home.lundi')}</td>
 				<td>14:00-19:00</td>
@@ -180,7 +211,7 @@
 				<td>{$t('home.dimanche')}</td>
 				<td>{$t('home.ferme')}</td>
 			</tr>
-		</table>
+		</table> -->
 
 		<p>
 			<a href="https://www.google.com/search?q=cadocuir+albertville+horaires" target="_blank">
@@ -194,7 +225,7 @@
 
 <div class="giga-container" id="bloc-seo">
 	<div class="center">
-        <H2 innerText={$t('home.informations-title')} />
+		<H2 innerText={$t('home.informations-title')} />
 	</div>
 	<div class="block-100">
 		<p>{$t('home.informations-desc-1')}</p>
@@ -207,6 +238,15 @@
 </div>
 
 <style lang="scss">
+	h3 {
+		color: $color-darkblue;
+		font-family: $font-family-main;
+		font-size: 2rem;
+		width: fit-content;
+		line-height: 2.8rem;
+		margin: 16px;
+	}
+
 	#top {
 		width: 100%;
 		height: 100vh;
@@ -216,15 +256,14 @@
 		flex-direction: column;
 		z-index: 100;
 
-		.logo-top{
+		.logo-top {
 			position: absolute;
 			top: 0;
 			left: 50%;
 			transform: translateX(-50%);
 
-			img{
-				
-			    width: 20rem;
+			img {
+				width: 20rem;
 				height: 20rem;
 				object-fit: contain;
 			}
@@ -284,7 +323,6 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-
 		}
 
 		.horaires-wrapper {
@@ -368,8 +406,6 @@
 		}
 	}
 
-
-
 	.block-100 {
 		font-family: $font-family-secondary;
 
@@ -386,37 +422,34 @@
 		color: $color-darkblue;
 	}
 
-    p:not(.title p){
-        visibility: hidden;
-        @media #{$media-mobile} {
-            text-align: justify;
-        }
-    }
-  
+	p:not(.title p) {
+		visibility: hidden;
+		@media #{$media-mobile} {
+			text-align: justify;
+		}
+	}
 
-    .scroll-down{
+	.scroll-down {
+		position: absolute;
+		bottom: 0;
 
+		img {
+			width: 6rem;
+			height: 6rem;
+			object-fit: contain;
+			animation: bounce 2s infinite;
+		}
 
-        position: absolute;
-        bottom: 0;
-
-        img{
-            width: 6rem;
-            height: 6rem;
-            object-fit: contain;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-    }
+		@keyframes bounce {
+			0% {
+				transform: translateY(0);
+			}
+			50% {
+				transform: translateY(-20px);
+			}
+			100% {
+				transform: translateY(0);
+			}
+		}
+	}
 </style>

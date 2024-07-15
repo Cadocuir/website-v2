@@ -1,5 +1,6 @@
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component, n as noop, a as safe_not_equal } from './chunks/index3-e904a6bd.js';
-import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index-36410280.js';
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from './chunks/index3-79b64016.js';
+import { e as error, j as json, t as text, R as Redirect, H as HttpError, A as ActionFailure } from './chunks/index-1dce6fb5.js';
+import { w as writable, r as readable } from './chunks/index2-5735988a.js';
 
 const DEV = false;
 
@@ -131,7 +132,29 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '\r\n\r\n<!DOCTYPE html>\r\n<html lang="fr" >\r\n	<head>\r\n		<meta charset="utf-8" />\r\n\r\n		<meta name="viewport" content="width=device-width" />\r\n		' + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover" style="background: #0B2027 ;">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>\r\n\r\n<style>\r\n\r\n	body {\r\n	\r\n	\r\n		\r\n		background: radial-gradient(at center, #0B2027 , #061418);\r\n		background-repeat: no-repeat;\r\n		width: 100%;\r\n		height: 100%;\r\n		min-height: 100vh;\r\n		min-width: 100vw;\r\n		z-index: 1;\r\n	\r\n	}\r\n\r\n\r\n\r\n\r\n	body::after{\r\n			content: '';\r\n			background-image: url(/images/noise.png);\r\n			background-repeat: repeat;\r\n			pointer-events: none;\r\n			width: 100%;\r\n			height: 100%;\r\n			z-index: -10;\r\n			position: fixed;\r\n			top: 0;\r\n	}\r\n</style>\r\n	",
+    app: ({ head, body, assets: assets2, nonce, env }) => `<!DOCTYPE html>\r
+<html lang="fr">\r
+	<head>\r
+		<meta charset="utf-8" />\r
+\r
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />\r
+\r
+		<!-- Google Tag Manager -->\r
+		<script>\r
+			(function (w, d, s, l, i) {\r
+				w[l] = w[l] || [];\r
+				w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });\r
+				var f = d.getElementsByTagName(s)[0],\r
+					j = d.createElement(s),\r
+					dl = l != 'dataLayer' ? '&l=' + l : '';\r
+				j.async = true;\r
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;\r
+				f.parentNode.insertBefore(j, f);\r
+			})(window, document, 'script', 'dataLayer', 'GTM-KR7XC5D');\r
+		<\/script>\r
+		<!-- End Google Tag Manager -->\r
+\r
+		` + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover" style="background: #f9f5ff">\r\n		<div style="display: contents">' + body + '</div>\r\n		<!-- Google Tag Manager (noscript) -->\r\n		<noscript\r\n			><iframe\r\n				src="https://www.googletagmanager.com/ns.html?id=GTM-KR7XC5D"\r\n				height="0"\r\n				width="0"\r\n				style="display: none; visibility: hidden"\r\n			></iframe\r\n		></noscript>\r\n		<!-- End Google Tag Manager (noscript) -->\r\n	</body>\r\n	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />\r\n</html>\r\n',
     error: ({ status, message }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -192,10 +215,10 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "xsxse5"
+  version_hash: "dm3mgv"
 };
 function get_hooks() {
-  return import('./chunks/hooks.server-36ffd81b.js');
+  return import('./chunks/hooks.server-6c095d22.js');
 }
 
 /** @type {Record<string, string>} */
@@ -776,54 +799,6 @@ function stringify_primitive(thing) {
 	if (thing === 0 && 1 / thing < 0) return NEGATIVE_ZERO.toString();
 	if (type === 'bigint') return `["BigInt","${thing}"]`;
 	return String(thing);
-}
-
-const subscriber_queue = [];
-function readable(value, start) {
-  return {
-    subscribe: writable(value, start).subscribe
-  };
-}
-function writable(value, start = noop) {
-  let stop;
-  const subscribers = /* @__PURE__ */ new Set();
-  function set(new_value) {
-    if (safe_not_equal(value, new_value)) {
-      value = new_value;
-      if (stop) {
-        const run_queue = !subscriber_queue.length;
-        for (const subscriber of subscribers) {
-          subscriber[1]();
-          subscriber_queue.push(subscriber, value);
-        }
-        if (run_queue) {
-          for (let i = 0; i < subscriber_queue.length; i += 2) {
-            subscriber_queue[i][0](subscriber_queue[i + 1]);
-          }
-          subscriber_queue.length = 0;
-        }
-      }
-    }
-  }
-  function update(fn) {
-    set(fn(value));
-  }
-  function subscribe2(run, invalidate = noop) {
-    const subscriber = [run, invalidate];
-    subscribers.add(subscriber);
-    if (subscribers.size === 1) {
-      stop = start(set) || noop;
-    }
-    run(value);
-    return () => {
-      subscribers.delete(subscriber);
-      if (subscribers.size === 0 && stop) {
-        stop();
-        stop = null;
-      }
-    };
-  }
-  return { set, update, subscribe: subscribe2 };
 }
 
 var cookie = {};

@@ -1,0 +1,1 @@
+const n="en",e="English",g="Low detail mode",t="Change language",a={code:n,language:e,Setting_LDM:g,Setting_Language:t};export{g as Setting_LDM,t as Setting_Language,n as code,a as default,e as language};

@@ -1,0 +1,1 @@
+{"version":3,"file":"projects-60e73253.js","sources":["../../../.svelte-kit/adapter-node/chunks/projects.js"],"sourcesContent":["const projects = {};\nexport {\n  projects as default\n};\n"],"names":[],"mappings":"AAAK,MAAC,QAAQ,GAAG;;;;"}

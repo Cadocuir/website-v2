@@ -1,1 +1,0 @@
-const t="Titre par default",e="fr",o="Français",a="Acceuil",n="A propos",c="Mes projets",g="Mode détaillé",s="Changer de langue",r={titre:t,code:e,language:o,homepage:a,about:n,projects:c,Setting_LDM:g,Setting_Language:s};export{g as Setting_LDM,s as Setting_Language,n as about,e as code,r as default,a as homepage,o as language,c as projects,t as titre};

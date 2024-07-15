@@ -1,0 +1,1 @@
+const e="fr",n="Français",a="Accueil",t="Mode détaillé",g="Changer de langue",o={code:e,language:n,homepage:a,Setting_LDM:t,Setting_Language:g};export{t as Setting_LDM,g as Setting_Language,e as code,o as default,a as homepage,n as language};

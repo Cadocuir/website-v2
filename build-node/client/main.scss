@@ -15,21 +15,33 @@
 }
 
 
-$color-primary : #D30C7B;
-$color-light : #FFFBFC;
-$color-darkblue : #0B2027;
+$color-primary : #FF9F1C;
+$color-light : #F9F5FF;
+$color-darkblue : #28262C;
 $font-family-main : "Bebas Neue";
 $font-family-secondary : "Comfortaa";
+$media-mobile: "only screen and (max-width : 960px)";
+
 
 :root{
 
-    --color-primary : #D30C7B;
-    --color-light : #FFFBFC;
-    --color-darkblue : #0B2027;
+    --color-primary : #FF9F1C;
+    --color-light : #F9F5FF;
+    --color-darkblue : #28262C;
 
     --font-family-main : "Bebas Neue";
     --font-family-secondary : "Comfortaa";
     font-size: 18px;
+
+
+    
+
+    @media #{$media-mobile} {
+        font-size: 12px;
+    }
+
 }
 
 @import url("/styles/reset.scss");
+
+@import url("/styles/base.scss");
