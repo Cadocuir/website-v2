@@ -154,7 +154,7 @@
 		<table>
 			<tr>
 				<td>{$t('home.lundi')}</td>
-				<td>14:00-19:00</td>
+				<td>{$t('home.ferme')}</td>
 			</tr>
 			<tr>
 				<td>{$t('home.mardi')}</td>
