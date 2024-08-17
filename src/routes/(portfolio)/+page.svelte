@@ -144,37 +144,33 @@
 
 	
 
-	<div class="center">
-		<h3>NOS HORAIRES D'ETE Du 15.07.2024 au 11.08.2024</h3>
-	</div>
-
 	<div class="horaires-wrapper">
 
 		
 		<table>
 			<tr>
 				<td>{$t('home.lundi')}</td>
-				<td>{$t('home.ferme')}</td>
+				<td>14h-19h</td>
 			</tr>
 			<tr>
 				<td>{$t('home.mardi')}</td>
-				<td>9h30-12h30 / 14h-19h</td>
+				<td>9h30-19h</td>
 			</tr>
 			<tr>
 				<td>{$t('home.mercredi')}</td>
-				<td>9h30-12h30 / 14h-19h</td>
+				<td>9h30-19h</td>
 			</tr>
 			<tr>
 				<td>{$t('home.jeudi')}</td>
-				<td>9h30-12h30 / 14h-19h</td>
+				<td>9h30-19h</td>
 			</tr>
 			<tr>
 				<td>{$t('home.vendredi')}</td>
-				<td>9h30-12h30 / 14h-19h</td>
+				<td>9h30-19h</td>
 			</tr>
 			<tr>
 				<td>{$t('home.samedi')}</td>
-				<td>9h30-12h30 / 14h-19h</td>
+				<td>9h30-19h</td>
 			</tr>
 			<tr>
 				<td>{$t('home.dimanche')}</td>
