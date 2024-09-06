@@ -32,8 +32,14 @@
 		"@prisma/client": "^4.15.0",
 		"@splinetool/loader": "^0.9.339",
 		"bcrypt": "^5.1.0",
+		"cheerio": "^1.0.0",
+		"fs": "^0.0.1-security",
 		"gsap": "^3.12.1",
 		"leaflet": "^1.9.4",
+		"puppeteer": "^23.3.0",
+		"puppeteer-cluster": "^0.24.0",
+		"puppeteer-extra": "^3.3.6",
+		"puppeteer-extra-plugin-stealth": "^2.11.2",
 		"sveltekit-i18n": "^2.2.2",
 		"three": "^0.152.2"
 	}
