@@ -54,3 +54,7 @@ export const fetchInstagramLatestData = async () => {
     }
 
 }
+
+(async () => {
+    await fetchInstagramLatestData()
+})();
