@@ -1,0 +1,1 @@
+import{r as t}from"../chunks/index.c6708bed.js";import{S as r,i as s,s as n}from"../chunks/index.f212c07f.js";const a=async e=>{throw t(302,"/")},i=Object.freeze(Object.defineProperty({__proto__:null,load:a},Symbol.toStringTag,{value:"Module"}));class p extends r{constructor(o){super(),s(this,o,null,null,n,{})}}export{p as component,i as universal};

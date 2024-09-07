@@ -1,32 +1,54 @@
-import { PuppeteerCluster } from "./cluster.js";
 import { loadFile, saveFile } from "./file.js";
-import * as cheerio from 'cheerio';
+import vanillaPuppeteer from 'puppeteer';
+import { addExtra } from "puppeteer-extra";
+import Stealth from "puppeteer-extra-plugin-stealth";
+import dotenv from "dotenv"
+const puppeteer = addExtra(vanillaPuppeteer);
+puppeteer.use(Stealth());
+dotenv.config()
 
-const cluster = new PuppeteerCluster()
+const { INSTAGRAM_USER, INSTAGRAM_PASSWORD } = process.env
 
-const run = async () => {
-    await cluster.init()
-    await cluster.queue("https://www.instagram.com/cadocuir/", listing)
-    // await cluster.cluster.idle().then(() => { cluster.close() })
+export const fetchInstagramLatestData = async () => {
+
+    try {
+        if (INSTAGRAM_USER == null || INSTAGRAM_PASSWORD == null) {
+            throw Error("Missing env Vars INSTAGRAM_USER INSTAGRAM_PASSWORD")
+        }
+
+        const browser = await puppeteer.launch({
+            headless: true,
+        });
+        const page = await browser.newPage();
+
+
+        await page.goto('https://www.instagram.com/accounts/login/?next=%2Fcadocuir%2F&source=desktop_nav', { waitUntil: "networkidle0", timeout: 0 });
+        await page.click("._a9--._ap36._a9_0")
+        await page.type("input[name='username']", "vibertvg")
+        await page.type("input[name='password']", "h$!XTZEz-m#A72J")
+        await new Promise((res, err) => {
+            setTimeout(() => {
+                res()
+            }, 2000);
+        })
+        await page.click("button[type='submit']", { waitUntil: "networkidle0" })
+        await page.waitForNavigation({ waitUntil: "networkidle0" })
+        await page.click("button[type='button']")
+        let data = {
+        }
+
+        page.on('response', async (response) => {
+            if (response.url().includes("https://www.instagram.com/graphql/query")) {
+                const json = await response.json()
+                data = { ...data, ...json.data }
+            }
+        });
+        await page.waitForNavigation({ waitUntil: "networkidle0" })
+        saveFile("fulldata.json", data)
+        console.log("full data : ", data)
+        await browser.close();
+    } catch (e) {
+        console.log(e)
+    }
+
 }
-
-
-
-const  listing = async (url, html) => {
-    const $ = cheerio.load(html);
-    const links = $('._ac7v .x1lliihq a')
-    links.each(async index => {
-        const link = links[index]
-        const url = new URL(link.attribs.href, "https://www.instagram.com/")
-        await cluster.queue(url, detail)
-
-    })
-}
-
-const detail = (url, html) => {
-    const $ = cheerio.load(html);
-    const h1 = $("h1").text()
-    console.log(h1)
-}
-
-await run()
