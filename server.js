@@ -3,7 +3,7 @@ import { createServer } from 'http';
 import { handler } from './build-node/handler.js';
 import { log } from 'console';
 import cron from 'node-cron';
-import { fetchInstagramLatestData } from './modules/main.js';
+import { run } from './modules/main.js';
 
 
 const port =  3000;
@@ -20,7 +20,7 @@ cron.schedule('0 0 2 * * *', async () => {
 
 const run = async()=>{
     console.log("Fetching started")
-    await fetchInstagramLatestData()
+    await run()
     console.log("Fetch ended")
 }
 

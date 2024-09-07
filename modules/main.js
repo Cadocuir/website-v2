@@ -55,62 +55,56 @@ export const fetchInstagramLatestData = async () => {
 
 }
 
-(async () => {
-    // await fetchInstagramLatestData()
-})();
 
+const login = async () => {
+    try {
+        if (INSTAGRAM_USER == null || INSTAGRAM_PASSWORD == null) {
+            throw Error("Missing env Vars INSTAGRAM_USER INSTAGRAM_PASSWORD")
+        }
 
-// (async () => {
+        const browser = await puppeteer.launch({
+            headless: false,
+            executablePath: process.env.CHROME_BIN || undefined,
+            args: ['--no-sandbox', '--disable-gpu']
+        });
+        const page = await browser.newPage();
 
+        // Wait until page has loaded
 
-//     try {
-//         if (INSTAGRAM_USER == null || INSTAGRAM_PASSWORD == null) {
-//             throw Error("Missing env Vars INSTAGRAM_USER INSTAGRAM_PASSWORD")
-//         }
+        await page.goto('https://www.instagram.com/accounts/login/', {
+            waitUntil: 'networkidle0',
+        });
 
-//         const browser = await puppeteer.launch({
-//             headless: false,
-//             executablePath: process.env.CHROME_BIN || undefined,
-//             args: ['--no-sandbox', '--disable-gpu']
-//         });
-//         const page = await browser.newPage();
+        // Wait for log in form
 
-//         // Wait until page has loaded
+        await Promise.all([
+            page.waitForSelector('input[name="username"]'),
+            page.waitForSelector('input[name="password"]'),
+            page.waitForSelector('button[type="submit"]'),
+        ]);
 
-//         await page.goto('https://www.instagram.com/accounts/login/', {
-//             waitUntil: 'networkidle0',
-//         });
+        // Enter username and password
+        await page.click("._a9--._ap36._a9_0")
+        await page.type('input[name="username"]', INSTAGRAM_USER);
+        await page.type('input[name="password"]', INSTAGRAM_PASSWORD);
+        await new Promise((res, err) => { setTimeout(_ => { res() }, 1000) })
+        await page.waitForSelector('button[type="submit"]:not([disabled])', { visible: true })
 
-//         // Wait for log in form
+        // Submit log in credentials and wait for navigation
+        await page.click('button[type="submit"]')
+        await page.waitForNavigation({
+            waitUntil: 'networkidle0',
+        })
 
-//         await Promise.all([
-//             page.waitForSelector('input[name="username"]'),
-//             page.waitForSelector('input[name="password"]'),
-//             page.waitForSelector('button[type="submit"]'),
-//         ]);
+        const cookies = JSON.stringify(await page.cookies());
+        await fs.writeFileSync('./cookies.json', cookies);
 
-//         // Enter username and password
-//         await page.click("._a9--._ap36._a9_0")
-//         await page.type('input[name="username"]', INSTAGRAM_USER);
-//         await page.type('input[name="password"]', INSTAGRAM_PASSWORD);
-//         await new Promise((res, err) => { setTimeout(_ => { res() }, 1000) })
-//         await page.waitForSelector('button[type="submit"]:not([disabled])', { visible: true })
+        await browser.close();
 
-//         // Submit log in credentials and wait for navigation
-//         await page.click('button[type="submit"]')
-//         await page.waitForNavigation({
-//             waitUntil: 'networkidle0',
-//         })
-
-//         const cookies = JSON.stringify(await page.cookies());
-//         await fs.writeFileSync('./cookies.json', cookies);
-
-//         await browser.close();
-
-//     } catch (e) {
-//         console.log(e)
-//     }
-// })();
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 // Load the cookies into the page passed in
 const loadCookie = async (page) => {
@@ -125,10 +119,10 @@ const loadCookie = async (page) => {
 }
 
 // Our main function
-const run = async () => {
+export const run = async () => {
     // Create a new puppeteer browser
     const browser = await puppeteer.launch({
-        headless: false,
+        headless: true,
         executablePath: process.env.CHROME_BIN || undefined,
         args: ['--no-sandbox', '--disable-gpu']
     });
@@ -147,17 +141,8 @@ const run = async () => {
         }
     });
 
-    await page.goto("https://www.instagram.com/cadocuir", {waitUntil:"networkidle0"})
+    await page.goto("https://www.instagram.com/cadocuir", { waitUntil: "networkidle0" })
     saveFile("fulldata.json", data)
     console.log("full data : ", data)
-    // Load your super secure URL
-    // await page.goto(https://super.secure/url);
-    // Do more work
-    // Profit
-
-    // Close the browser once you have finished
     browser.close();
 }
-
-// Run it all
-run();
