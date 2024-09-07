@@ -19,7 +19,7 @@ export const fetchInstagramLatestData = async () => {
         const browser = await puppeteer.launch({
             headless: true,
             executablePath: process.env.CHROME_BIN || undefined,
-            args: ['--no-sandbox','--disable-gpu']
+            args: ['--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--headless']
         });
         const page = await browser.newPage();
 
