@@ -25,6 +25,6 @@ RUN set -x \
 RUN npm install
 RUN npx prisma migrate deploy
 RUN npx prisma generate
-RUN pnpm run build
+RUN npm run build
 
 ENTRYPOINT node server.js
