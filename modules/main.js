@@ -19,15 +19,15 @@ export const fetchInstagramLatestData = async () => {
         const browser = await puppeteer.launch({
             headless: true,
             executablePath: process.env.CHROME_BIN || undefined,
-            args: ['--no-sandbox']
+            args: ['--no-sandbox','--disable-gpu']
         });
         const page = await browser.newPage();
 
 
         await page.goto('https://www.instagram.com/accounts/login/?next=%2Fcadocuir%2F&source=desktop_nav', { waitUntil: "networkidle0", timeout: 0 });
         await page.click("._a9--._ap36._a9_0")
-        await page.type("input[name='username']", "vibertvg")
-        await page.type("input[name='password']", "h$!XTZEz-m#A72J")
+        await page.type("input[name='username']", INSTAGRAM_USER)
+        await page.type("input[name='password']", INSTAGRAM_PASSWORD)
         await new Promise((res, err) => {
             setTimeout(() => {
                 res()
@@ -38,7 +38,6 @@ export const fetchInstagramLatestData = async () => {
         await page.click("button[type='button']")
         let data = {
         }
-
         page.on('response', async (response) => {
             if (response.url().includes("https://www.instagram.com/graphql/query")) {
                 const json = await response.json()
