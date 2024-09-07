@@ -40,7 +40,6 @@
 		"leaflet": "^1.9.4",
 		"node-cron": "^3.0.3",
 		"puppeteer": "^23.3.0",
-		"puppeteer-cluster": "^0.24.0",
 		"puppeteer-extra": "^3.3.6",
 		"puppeteer-extra-plugin-stealth": "^2.11.2",
 		"sveltekit-i18n": "^2.2.2",
