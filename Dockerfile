@@ -8,7 +8,6 @@ RUN rm -rf .npmrc
 
 ENV BODY_SIZE_LIMIT=Infinity
 
-RUN npm install -g pnpm
 RUN apk add --no-cache libc6-compat
 RUN apk update
 RUN apk add chromium
@@ -23,10 +22,7 @@ RUN set -x \
     chromium \
     && npm install puppeteer@1.10.0
 
-ENV PNPM_HOME=/app/.pnpm
-ENV PATH=$PNPM_HOME:$PATH
-
-RUN pnpm install
+RUN npm install
 RUN npx prisma migrate deploy
 RUN npx prisma generate
 RUN pnpm run build
