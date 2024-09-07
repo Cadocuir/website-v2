@@ -8,6 +8,7 @@ RUN rm -rf .npmrc
 
 ENV BODY_SIZE_LIMIT=Infinity
 
+RUN npm install -g pnpm
 RUN apk add --no-cache libc6-compat
 RUN apk update
 RUN apk add chromium
@@ -20,11 +21,14 @@ RUN set -x \
     udev \
     ttf-freefont \
     chromium \
-    && npm install puppeteer
+    && npm install puppeteer@1.10.0
 
-RUN npm install
+ENV PNPM_HOME=/app/.pnpm
+ENV PATH=$PNPM_HOME:$PATH
+
+RUN pnpm install
 RUN npx prisma migrate deploy
 RUN npx prisma generate
-RUN npm run build
+RUN pnpm run build
 
 ENTRYPOINT node server.js
