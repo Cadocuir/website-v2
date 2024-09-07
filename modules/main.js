@@ -18,6 +18,8 @@ export const fetchInstagramLatestData = async () => {
 
         const browser = await puppeteer.launch({
             headless: true,
+            executablePath: process.env.CHROME_BIN || undefined,
+            args: ['--no-sandbox']
         });
         const page = await browser.newPage();
 
