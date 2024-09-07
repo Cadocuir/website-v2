@@ -14,18 +14,19 @@ app.use(`/uploads`, express.static("uploads"));
 app.use(handler);
 
 cron.schedule('0 0 2 * * *', async () => {
-    run()
+    fetchInstagramData()
 });
 
 
-const run = async()=>{
+const fetchInstagramData = async()=>{
     console.log("Fetching started")
     await run()
     console.log("Fetch ended")
 }
 
 
-run()
+fetchInstagramData()
+
 
 server.listen(port, () => {
   log('listening on port', port);
