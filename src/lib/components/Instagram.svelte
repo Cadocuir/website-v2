@@ -46,10 +46,10 @@
 		if (video.paused || video.dataset.already == null) {
 			video.play();
 			video.dataset.already = 'true';
-			playBtn.style.display= "none"
+			playBtn.style.display = 'none';
 		} else {
 			video.pause();
-			playBtn.style.display= "block"
+			playBtn.style.display = 'block';
 		}
 	}
 
@@ -68,7 +68,7 @@
 
 {#if type === 'loading'}
 	<div class="giga-container" id="loading">
-		<div class="content-block">
+		<div class="center">
 			<H2 innerText="Nos dernieres publications" />
 		</div>
 	</div>
@@ -117,6 +117,8 @@
 		</div>
 		<div />
 	</div>
+{:else}
+	<div />
 {/if}
 
 <style lang="scss">
