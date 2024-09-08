@@ -5,6 +5,7 @@
 	import { t } from '$lib/translations';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import Instagram from '../../lib/components/Instagram.svelte';
 
 	let img2Elem;
 	let img3Elem;
@@ -186,6 +187,7 @@
 		</p>
 	</div>
 </div>
+
 
 <div id="map" />
 

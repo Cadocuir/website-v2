@@ -43,6 +43,7 @@
 		"puppeteer-extra": "^3.3.6",
 		"puppeteer-extra-plugin-stealth": "^2.11.2",
 		"sveltekit-i18n": "^2.2.2",
+		"swiper": "^11.1.12",
 		"three": "^0.152.2"
 	}
 }

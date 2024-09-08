@@ -4,6 +4,7 @@ import { addExtra } from "puppeteer-extra";
 import Stealth from "puppeteer-extra-plugin-stealth";
 import dotenv from "dotenv"
 import fs from 'fs'
+import { parseInstagramData } from "./parser.js";
 const puppeteer = addExtra(vanillaPuppeteer);
 puppeteer.use(Stealth());
 dotenv.config()
@@ -46,6 +47,7 @@ export const fetchInstagramLatestData = async () => {
             }
         });
         await page.waitForNavigation({ waitUntil: "networkidle0" })
+        data.last_update = Date.now()
         saveFile("fulldata.json", data)
         console.log("full data : ", data)
         await browser.close();
@@ -142,7 +144,24 @@ export const run = async () => {
     });
 
     await page.goto("https://www.instagram.com/cadocuir", { waitUntil: "networkidle0" })
-    saveFile("fulldata.json", data)
-    console.log("full data : ", data)
+   
+    const dataInstagramParsed = await parseInstagramData(data)
+    for (const publish of dataInstagramParsed.publish) {
+        if (publish.cover != null) {
+            const viewSource = await page.goto(publish.cover.url, { waitUntil: "networkidle0" })
+            fs.writeFile(`uploads/${publish.id}.jpg`, await viewSource.buffer(), function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+            })
+
+            publish.cover.url = `uploads/${publish.id}.jpg`
+        }
+
+    }
+
+    saveFile("data.json",dataInstagramParsed)
     browser.close();
 }
+
+

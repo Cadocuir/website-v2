@@ -1,34 +1,13 @@
-import { json } from "@sveltejs/kit"
-import { log } from "console"
-
-export async function GET({ fetch }) {
-    let data = null
-    try {
-        data = await fetch("../uploads/fulldata.json").then(res => res.json()).catch(err => null)
-    } catch (error) {
-        log("Error loading instagram data", error)
-    }
-
-    if (!data)
-        return new Response(
-            JSON.stringify({ type: 'failure', errorMsg: 'Impossible de charger les données' }),
-            { status: 400 }
-        );
 
 
-    const { xdt_api__v1__feed__user_timeline_graphql_connection, last_update = null } = data
+export const parseInstagramData = async (instagramData) => {
+    const { xdt_api__v1__feed__user_timeline_graphql_connection, last_update = null } = instagramData
     if (xdt_api__v1__feed__user_timeline_graphql_connection == null)
-        return new Response(
-            JSON.stringify({ type: 'failure', errorMsg: 'Impossible de charger les données' }),
-            { status: 400 }
-        );
+        return { type: 'failure', errorMsg: 'Impossible de charger les données' }
 
     const { edges } = xdt_api__v1__feed__user_timeline_graphql_connection
     if (edges == null || !Array.isArray(edges))
-        return new Response(
-            JSON.stringify({ type: 'failure', errorMsg: 'Impossible de charger les données' }),
-            { status: 400 }
-        );
+        return { type: 'failure', errorMsg: 'Impossible de charger les données' }
 
 
     let finalData = {
@@ -47,6 +26,7 @@ export async function GET({ fetch }) {
             localdata.date = node.taken_at
             localdata.cover = node.image_versions2
             localdata.video = node.video_versions
+            localdata.id = node.id
             if (node.image_versions2 != null && node.image_versions2.candidates != null && Object.keys(node.image_versions2.candidates).length > 0)
                 localdata.cover = node.image_versions2.candidates[0]
             if (node.video_versions != null && Object.keys(node.video_versions).length > 0)
@@ -59,10 +39,7 @@ export async function GET({ fetch }) {
     }
 
     if (finalData.publish.length <= 0)
-        return new Response(
-            JSON.stringify({ type: 'failure', errorMsg: 'Impossible de charger les données' }),
-            { status: 400 }
-        );
+        return { type: 'failure', errorMsg: 'Impossible de charger les données' }
 
-    return json(finalData)
+    return finalData
 }

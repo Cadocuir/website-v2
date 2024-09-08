@@ -13,10 +13,24 @@ async function GET({ fetch }) {
       JSON.stringify({ type: "failure", errorMsg: "Impossible de charger les données" }),
       { status: 400 }
     );
-  let finalData = [];
+  const { xdt_api__v1__feed__user_timeline_graphql_connection, last_update = null } = data;
+  if (xdt_api__v1__feed__user_timeline_graphql_connection == null)
+    return new Response(
+      JSON.stringify({ type: "failure", errorMsg: "Impossible de charger les données" }),
+      { status: 400 }
+    );
+  const { edges } = xdt_api__v1__feed__user_timeline_graphql_connection;
+  if (edges == null || !Array.isArray(edges))
+    return new Response(
+      JSON.stringify({ type: "failure", errorMsg: "Impossible de charger les données" }),
+      { status: 400 }
+    );
+  let finalData = {
+    type: "success",
+    last_update,
+    publish: []
+  };
   try {
-    const { xdt_api__v1__feed__user_timeline_graphql_connection } = data;
-    const { edges } = xdt_api__v1__feed__user_timeline_graphql_connection;
     for (const edge of edges) {
       const { node } = edge;
       const localdata = {};
@@ -30,13 +44,18 @@ async function GET({ fetch }) {
       if (node.video_versions != null && Object.keys(node.video_versions).length > 0)
         localdata.video = node.video_versions[0];
       localdata.location = node.location?.name;
-      finalData.push(localdata);
+      finalData.publish.push(localdata);
     }
   } catch (error) {
     log("Error parsing instagram data", error);
   }
+  if (finalData.publish.length <= 0)
+    return new Response(
+      JSON.stringify({ type: "failure", errorMsg: "Impossible de charger les données" }),
+      { status: 400 }
+    );
   return json(finalData);
 }
 
 export { GET };
-//# sourceMappingURL=_server-1ab727c3.js.map
+//# sourceMappingURL=_server-dbfe6d73.js.map

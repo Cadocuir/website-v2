@@ -339,9 +339,9 @@ var _layout = /*#__PURE__*/Object.freeze({
 
 const index = 2;
 let component_cache;
-const component = async () => component_cache ??= (await import('./_layout.svelte-92a04e42.js')).default;
+const component = async () => component_cache ??= (await import('./_layout.svelte-2128a7cd.js')).default;
 const universal_id = "src/routes/(portfolio)/+layout.js";
-const imports = ["_app/immutable/nodes/2.1d287f11.js","_app/immutable/chunks/index.86d92c49.js","_app/immutable/chunks/preload-helper.a4192956.js","_app/immutable/chunks/index.7f081118.js","_app/immutable/chunks/index.f212c07f.js","_app/immutable/chunks/stores.847e5b9e.js","_app/immutable/chunks/singletons.38928ab2.js"];
+const imports = ["_app/immutable/nodes/2.0327d2a9.js","_app/immutable/chunks/index.86d92c49.js","_app/immutable/chunks/preload-helper.a4192956.js","_app/immutable/chunks/index.7f081118.js","_app/immutable/chunks/index.f212c07f.js","_app/immutable/chunks/stores.c4f04ede.js","_app/immutable/chunks/singletons.55e466b7.js"];
 const stylesheets = ["_app/immutable/assets/2.3eac83de.css"];
 const fonts = [];
 
@@ -357,4 +357,4 @@ var _2 = /*#__PURE__*/Object.freeze({
 });
 
 export { _2 as _, locales as a, locale as l, t2 as t };
-//# sourceMappingURL=2-d063c1df.js.map
+//# sourceMappingURL=2-5c934fdd.js.map
