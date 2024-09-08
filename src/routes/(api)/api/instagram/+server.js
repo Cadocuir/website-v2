@@ -1,14 +1,12 @@
 import { json } from "@sveltejs/kit"
 import { log } from "console"
-import fs from "fs"
 
-export async function GET() {
+export async function GET({ fetch}) {
     let data = null
     try {
-        const rawdata = await fs.readFileSync("uploads/fulldata.json", "utf8")
-        data = JSON.parse(rawdata)
+        data = await fetch("../uploads/fulldata.json").then(res => res.json()).catch(err => null)
     } catch (error) {
-        log("Error loading instagram data")
+        log("Error loading instagram data",error)
     }
 
     if (!data)
