@@ -11,24 +11,50 @@
 		setTimeout(async (_) => {
 			await loadData();
 			const swiper = new Swiper('.swiper', {
+				spaceBetween: 16,
 				speed: 800,
 				direction: 'horizontal',
 				loop: true,
 				enabled: true,
-				slidesPerView: 3,
+				slidesPerView: 1,
 				init: true,
-				autoplay: true
+				autoplay: true,
+				breakpoints: {
+					640: {
+						slidesPerView: 2
+					},
+					960: {
+						slidesPerView: 3
+					}
+					// w
+				}
 			});
 			swiper.init();
 		}, 0);
 	});
 
-	async function error(event) {
-		//event.target.src = event.target.dataset.src
+	async function play(event) {
+		const videoId = parseInt(event.currentTarget.id.replace('video-', ''));
+		if (isNaN(videoId)) return;
+
+		const video = document.querySelector('#lecteur-' + videoId);
+		if (video == null) return;
+
+		const playBtn = document.querySelector('.play-' + videoId);
+		if (playBtn == null) return;
+
+		if (video.paused || video.dataset.already == null) {
+			video.play();
+			video.dataset.already = 'true';
+			playBtn.style.display= "none"
+		} else {
+			video.pause();
+			playBtn.style.display= "block"
+		}
 	}
 
 	async function loadData() {
-		const data = await fetch('/api/instagram')
+		const data = await fetch('/uploads/data.json')
 			.then((result) => result.json())
 			.catch((err) => {
 				return { type: 'failure', last_update: null, publish: [] };
@@ -37,12 +63,6 @@
 		last_update = data.last_update;
 		publish = data.publish;
 		type = data.type;
-		for (const pub of publish) {
-			const result = await fetch(pub.cover.url);
-			const body = URL.createObjectURL(new Blob([result.body], { type: 'image/png' } /* (1) */));
-			pub.cover.blob = body
-			
-		}
 	}
 </script>
 
@@ -54,34 +74,44 @@
 	</div>
 {:else if type === 'success'}
 	<div class="giga-container" id="success">
-		<div class="content-block">
+		<div class="center">
 			<H2 innerText="Nos dernieres publications" />
-
-			<div class="swiper swiper-instagram">
-				<!-- Additional required wrapper -->
-				<div class="swiper-wrapper">
-					{#each publish as pub}
-						<!-- Slides -->
-						<div class="swiper-slide">
-							<div class="swiper-slide-inner">
-								<img
-									on:error={error}
-									data-src={pub.cover.url}
-									src={pub.cover.blob}
-									alt="instagram pub"
-								/>
-								{#if pub.video != null}
-									<video width={pub.video.width} muted height={pub.video.height}>
-										<source src={pub.video.url} />
-										<track kind="captions" />
-									</video>
-								{/if}
-								<p>{pub.titre}</p>
-								<span>{pub.like_count}</span>
-								<span>{pub.date}</span>
+		</div>
+		<div class="content-block">
+			<div class="block-100">
+				<div class="swiper swiper-instagram">
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper">
+						{#each publish as pub, index}
+							<!-- Slides -->
+							<div class="swiper-slide">
+								<div class="swiper-slide-inner">
+									<img src={pub.cover.url} alt={pub.titre} />
+									{#if pub.video != null}
+										<!-- svelte-ignore a11y-click-events-have-key-events -->
+										<div class="video" id="video-{index}" on:click={play}>
+											<video
+												id="lecteur-{index}"
+												width={pub.video.width}
+												muted
+												height={pub.video.height}
+											>
+												<source src={pub.video.url} />
+												<track kind="captions" />
+											</video>
+											<div class="play play-{index}">
+												<img src="/images/play.png" alt="play-video" />
+											</div>
+										</div>
+									{/if}
+									<div class="info" />
+									<p>{pub.titre}</p>
+									<span>{pub.like_count}</span>
+									<span>{pub.date}</span>
+								</div>
 							</div>
-						</div>
-					{/each}
+						{/each}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -90,11 +120,19 @@
 {/if}
 
 <style lang="scss">
+	.center {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.block-100 {
+		margin: 32px 16px;
+	}
 	.swiper-instagram {
 		.swiper-wrapper {
 			.swiper-slide {
 				height: 60vh;
-				padding: 16px;
 
 				.swiper-slide-inner {
 					width: 100%;
@@ -116,8 +154,20 @@
 						z-index: 10;
 					}
 
-					video : {
+					.video {
 						z-index: 20;
+						position: relative;
+						height: 100%;
+						.play {
+							cursor: pointer;
+							position: absolute;
+							width: 50px;
+							height: 50px;
+							left: 50%;
+							top: 50%;
+							transform: translate(-50%, -50%);
+							z-index: 30;
+						}
 					}
 				}
 			}

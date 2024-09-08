@@ -188,6 +188,7 @@
 	</div>
 </div>
 
+<Instagram></Instagram>
 
 <div id="map" />
 
