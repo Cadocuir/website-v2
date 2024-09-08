@@ -19,7 +19,8 @@ services:
       - "entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "traefik.http.services.cadocuir.loadbalancer.server.port=3000"
       - "traefik.http.routers.cadocuir.middlewares=`redirect-www-to-non-www@file`"
-
+    volumes:
+      - ./uploads:/app/uploads
 networks:
   traefik-net:
    external: true
