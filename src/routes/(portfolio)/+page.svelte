@@ -178,37 +178,7 @@
 			</tr>
 		</table>
 
-		<!-- <table>
-			<tr>
-				<td>{$t('home.lundi')}</td>
-				<td>14:00-19:00</td>
-			</tr>
-			<tr>
-				<td>{$t('home.mardi')}</td>
-				<td>09:30–19:00</td>
-			</tr>
-			<tr>
-				<td>{$t('home.mercredi')}</td>
-				<td>09:30–19:00</td>
-			</tr>
-			<tr>
-				<td>{$t('home.jeudi')}</td>
-				<td>09:30–19:00</td>
-			</tr>
-			<tr>
-				<td>{$t('home.vendredi')}</td>
-				<td>09:30–19:00</td>
-			</tr>
-			<tr>
-				<td>{$t('home.samedi')}</td>
-				<td>09:30–19:00</td>
-			</tr>
-			<tr>
-				<td>{$t('home.dimanche')}</td>
-				<td>{$t('home.ferme')}</td>
-			</tr>
-		</table> -->
-
+	
 		<p>
 			<a href="https://www.google.com/search?q=cadocuir+albertville+horaires" target="_blank">
 				{$t('home.horaires-exception')}
