@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Swiper from 'swiper';
+	import { Autoplay } from 'swiper/modules';
 	import H2 from '$lib/components/H2.svelte';
 	import 'swiper/css';
 	import { t } from '$lib/translations';
@@ -10,15 +11,21 @@
 	onMount((_) => {
 		setTimeout(async (_) => {
 			await loadData();
-			const swiper = new Swiper('.swiper', {
+			window.swiper = new Swiper('.swiper', {
 				spaceBetween: 16,
+				modules: [Autoplay],
 				speed: 800,
 				direction: 'horizontal',
 				loop: true,
 				enabled: true,
 				slidesPerView: 1,
 				init: true,
-				autoplay: true,
+				autoplay: {
+					delay: 3000,
+					disableOnInteraction: true,
+
+
+				},
 				breakpoints: {
 					640: {
 						slidesPerView: 2
@@ -26,30 +33,36 @@
 					960: {
 						slidesPerView: 3
 					}
-					// w
-				}
+				},
 			});
 			swiper.init();
 		}, 0);
 	});
 
 	async function play(event) {
-		const videoId = parseInt(event.currentTarget.id.replace('video-', ''));
-		if (isNaN(videoId)) return;
+		const video = event.currentTarget.firstElementChild;
+		const btn = event.currentTarget.lastElementChild;
 
-		const video = document.querySelector('#lecteur-' + videoId);
-		if (video == null) return;
+		video.addEventListener('play', () => {
+			video.dataset.already = 'true';
+			btn.style.display = 'none';
+			window.swiper.autoplay.stop();
+		});
 
-		const playBtn = document.querySelector('.play-' + videoId);
-		if (playBtn == null) return;
+		video.addEventListener('pause', () => {
+			btn.style.display = 'block';
+			window.swiper.autoplay.start();
+		});
+		video.addEventListener('ended', () => {
+			btn.style.display = 'block';
+			video.pause();
+			window.swiper.autoplay.start();
+		});
 
 		if (video.paused || video.dataset.already == null) {
 			video.play();
-			video.dataset.already = 'true';
-			playBtn.style.display = 'none';
 		} else {
 			video.pause();
-			playBtn.style.display = 'block';
 		}
 	}
 
@@ -69,13 +82,13 @@
 {#if type === 'loading'}
 	<div class="giga-container" id="loading">
 		<div class="center">
-			<H2 innerText="Nos dernieres publications" />
+			<H2 innerText={$t('home.instagram-title')} />
 		</div>
 	</div>
 {:else if type === 'success'}
 	<div class="giga-container" id="success">
 		<div class="center">
-			<H2 innerText="Nos dernieres publications" />
+			<H2 innerText={$t('home.instagram-title')} />
 		</div>
 		<div class="content-block">
 			<div class="block-100">
@@ -104,14 +117,21 @@
 											</div>
 										</div>
 									{/if}
-									<div class="info" />
-									<p>{pub.titre}</p>
-									<span>{pub.like_count}</span>
-									<span>{pub.date}</span>
+									<div class="info">
+										<a href="https://www.instagram.com/cadocuir/?hl=fr" target="_blank">
+											<p>{pub.titre}</p>
+											<div class="sub">
+												<span>{pub.like_count} likes</span>
+												<span>{new Date(pub.date * 1000).toLocaleDateString('fr-FR')}</span>
+											</div>
+										</a>
+									</div>
 								</div>
 							</div>
 						{/each}
 					</div>
+
+					<div class="swiper-pagination" />
 				</div>
 			</div>
 		</div>
@@ -135,7 +155,6 @@
 		.swiper-wrapper {
 			.swiper-slide {
 				height: 60vh;
-
 				.swiper-slide-inner {
 					width: 100%;
 					height: 100%;
@@ -171,6 +190,50 @@
 							z-index: 30;
 						}
 					}
+
+					.info {
+						opacity: 0;
+						position: absolute;
+						bottom: 0;
+						z-index: 40;
+						background-color: rgba($color: #000000, $alpha: 0.7);
+						width: 100%;
+						padding: 16px;
+						display: flex;
+						flex-direction: column;
+
+						transition: all 0.3s ease-in-out;
+						a {
+							text-decoration: none;
+							color: $color-light;
+						}
+						p {
+							color: $color-light;
+							font-family: $font-family-secondary;
+							width: fit-content;
+							font-size: 0.8rem;
+						}
+
+						.sub {
+							margin-top: 16px;
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							span {
+								color: $color-light;
+								font-family: $font-family-main;
+								font-size: 0.8rem;
+								border-bottom: 2px solid $color-primary;
+								width: fit-content;
+							}
+						}
+					}
+				}
+			}
+
+			.swiper-slide:hover {
+				.info {
+					opacity: 1;
 				}
 			}
 		}

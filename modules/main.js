@@ -144,7 +144,7 @@ export const run = async () => {
     });
 
     await page.goto("https://www.instagram.com/cadocuir", { waitUntil: "networkidle0" })
-   
+
     const dataInstagramParsed = await parseInstagramData(data)
     for (const publish of dataInstagramParsed.publish) {
         if (publish.cover != null) {
@@ -158,9 +158,10 @@ export const run = async () => {
             publish.cover.url = `uploads/${publish.id}.jpg`
         }
 
+
     }
 
-    saveFile("data.json",dataInstagramParsed)
+    saveFile("data.json", dataInstagramParsed)
     browser.close();
 }
 

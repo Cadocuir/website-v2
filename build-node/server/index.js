@@ -137,29 +137,29 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => `<!DOCTYPE html>
-<html lang="fr">
-	<head>
-		<meta charset="utf-8" />
-
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-		<!-- Google Tag Manager -->
-		<script>
-			(function (w, d, s, l, i) {
-				w[l] = w[l] || [];
-				w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-				var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s),
-					dl = l != 'dataLayer' ? '&l=' + l : '';
-				j.async = true;
-				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-				f.parentNode.insertBefore(j, f);
-			})(window, document, 'script', 'dataLayer', 'GTM-KR7XC5D');
-		<\/script>
-		<!-- End Google Tag Manager -->
-
-		` + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover" style="background: #f9f5ff">\n		<div style="display: contents">' + body + '</div>\n		<!-- Google Tag Manager (noscript) -->\n		<noscript\n			><iframe\n				src="https://www.googletagmanager.com/ns.html?id=GTM-KR7XC5D"\n				height="0"\n				width="0"\n				style="display: none; visibility: hidden"\n			></iframe\n		></noscript>\n		<!-- End Google Tag Manager (noscript) -->\n	</body>\n	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />\n</html>\n',
+    app: ({ head, body, assets: assets2, nonce, env }) => `<!DOCTYPE html>\r
+<html lang="fr">\r
+	<head>\r
+		<meta charset="utf-8" />\r
+\r
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />\r
+\r
+		<!-- Google Tag Manager -->\r
+		<script>\r
+			(function (w, d, s, l, i) {\r
+				w[l] = w[l] || [];\r
+				w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });\r
+				var f = d.getElementsByTagName(s)[0],\r
+					j = d.createElement(s),\r
+					dl = l != 'dataLayer' ? '&l=' + l : '';\r
+				j.async = true;\r
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;\r
+				f.parentNode.insertBefore(j, f);\r
+			})(window, document, 'script', 'dataLayer', 'GTM-KR7XC5D');\r
+		<\/script>\r
+		<!-- End Google Tag Manager -->\r
+\r
+		` + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover" style="background: #f9f5ff">\r\n		<div style="display: contents">' + body + '</div>\r\n		<!-- Google Tag Manager (noscript) -->\r\n		<noscript\r\n			><iframe\r\n				src="https://www.googletagmanager.com/ns.html?id=GTM-KR7XC5D"\r\n				height="0"\r\n				width="0"\r\n				style="display: none; visibility: hidden"\r\n			></iframe\r\n		></noscript>\r\n		<!-- End Google Tag Manager (noscript) -->\r\n	</body>\r\n	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />\r\n</html>\r\n',
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -231,7 +231,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "3qb00l"
+  version_hash: "i2kcbb"
 };
 function get_hooks() {
   return import('./chunks/hooks.server-2ed425fb.js');

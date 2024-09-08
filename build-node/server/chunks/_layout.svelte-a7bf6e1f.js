@@ -1,6 +1,6 @@
 import { c as create_ssr_component, b as subscribe, d as add_attribute, e as escape, v as validate_component, f as null_to_empty, h as each } from './index3-9cccdbaa.js';
 import { p as page } from './stores-4336c9e3.js';
-import { t as t2, l as locale, a as locales } from './2-5c934fdd.js';
+import { t as t2, l as locale, a as locales } from './2-5c9b6015.js';
 import './index2-f64d651d.js';
 
 const css$1 = {
@@ -55,4 +55,4 @@ const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
 });
 
 export { Layout as default };
-//# sourceMappingURL=_layout.svelte-2128a7cd.js.map
+//# sourceMappingURL=_layout.svelte-a7bf6e1f.js.map
