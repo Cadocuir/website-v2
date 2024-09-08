@@ -7,19 +7,53 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<script>
+
+		// Define dataLayer and the gtag function.
+
 		window.dataLayer = window.dataLayer || [];
+
 		function gtag() { dataLayer.push(arguments); }
+
+
 		gtag('consent', 'default', {
+
 			'ad_storage': 'denied',
-			'analytics_storage': 'denied',
+
 			'ad_user_data': 'denied',
+
 			'ad_personalization': 'denied',
+
+			'analytics_storage': 'denied',
+
+			'functionality_storage': 'denied',
+
 			'personalization_storage': 'denied',
-			'functionality_storage': 'granted',
-			'security_storage': 'granted',
-			'wait_for_update': 500
+
+			'security_storage': 'denied',
+
+			'regions': ['US', 'FR'],
+
 		});
-		gtag("set", "ads_data_redaction", true);
+
+		gtag('consent', 'default', {
+
+			'ad_storage': 'denied',
+
+			'ad_user_data': 'denied',
+
+			'ad_personalization': 'denied',
+
+			'analytics_storage': 'denied',
+
+			'functionality_storage': 'denied',
+
+			'personalization_storage': 'denied',
+
+			'security_storage': 'denied',
+
+		});
+
+
 	</script>
 	<!-- Google Tag Manager -->
 	<script>
