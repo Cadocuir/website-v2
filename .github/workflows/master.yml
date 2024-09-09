@@ -19,4 +19,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
         password: ${{ secrets.PASSWORD }} 
-        script: cd /home/guillianv/dev/sveltekit/cadocuir/website && docker compose down && git pull origin master && docker compose up -d --force-recreate --build
+        script: cd /home/guillianv/dev/sveltekit/cadocuir/website && git pull origin master && docker compose up -d --force-recreate --build --no-deps --remove-orphans

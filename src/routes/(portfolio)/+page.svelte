@@ -80,7 +80,6 @@
 	<meta name="description" content={$t('home.meta-description')} />
 	<meta name="keywords" content={$t('home.meta-keywords')} />
 	<meta name="author" content={$t('home.meta-author')} />
-	<link rel="icon" href="/favicon.ico" />
 	<meta property="og:description" content={$t('home.meta-description')} />
 	<meta property="og:title" content={$t('home.title')} />
 	<meta property="og:type" content="article" />
