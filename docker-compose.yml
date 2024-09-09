@@ -18,7 +18,11 @@ services:
       - "entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "traefik.http.services.cadocuir.loadbalancer.server.port=3000"
-      - "traefik.http.routers.cadocuir.middlewares=`redirect-www-to-non-www@file`"
+      - "traefik.http.routers.cadocuir-secure.middlewares=cadocuir-redirect"
+      - "traefik.http.routers.cadocuir.middlewares=cadocuir-redirect"
+      - "traefik.http.middlewares.cadocuir-redirect.redirectregex.regex=^https?://cadocuir\\.fr/(.*)"
+      - "traefik.http.middlewares.cadocuir-redirect.redirectregex.replacement=https://www.cadocuir.fr/$${1}"
+      - "traefik.http.middlewares.cadocuir-redirect.redirectregex.permanent=false"
     volumes:
       - ./uploads:/app/uploads
 networks:
