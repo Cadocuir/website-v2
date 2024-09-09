@@ -99,7 +99,7 @@
 							<!-- Slides -->
 							<div class="swiper-slide">
 								<div class="swiper-slide-inner">
-									<img src={pub.cover.url} alt={pub.titre} />
+									<img loading="lazy" src="{pub.cover.url}?width=600&height=600" alt={pub.titre} />
 									{#if pub.video != null}
 										<!-- svelte-ignore a11y-click-events-have-key-events -->
 										<div class="video" id="video-{index}" on:click={play}>

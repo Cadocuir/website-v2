@@ -1,5 +1,4 @@
 <script>
-
 	import H1 from '$lib/components/H1.svelte';
 	import H2 from '$lib/components/H2.svelte';
 	import { t } from '$lib/translations';
@@ -10,7 +9,7 @@
 	let img2Elem;
 	let img3Elem;
 
-	onMount(async (_) => {
+	async function load() {
 		if (browser) {
 			const module = await import('leaflet');
 			const L = module.default;
@@ -60,6 +59,10 @@
 				}
 			);
 		});
+	}
+
+	onMount(async (_) => {
+		setTimeout(() => {load()}, 0);
 	});
 
 	function mouseMoving(e) {
@@ -88,7 +91,7 @@
 
 <div on:mousemove={mouseMoving} id="top">
 	<div id="paralax">
-		<img src="/images/cadocuir-1.webp" alt="cadocuir entrée" />
+		<img src="/images/cadocuir-1.webp?width=1600" alt="cadocuir entrée" />
 		<img bind:this={img2Elem} style="left:15px" src="/images/cadocuir-2.webp" alt="longchamps" />
 		<img bind:this={img3Elem} style="left:-15px" src="/images/cadocuir-3.webp" alt="portefeuils" />
 	</div>
@@ -143,11 +146,7 @@
 		<H2 innerText={$t('home.horaires')} />
 	</div>
 
-	
-
 	<div class="horaires-wrapper">
-
-		
 		<table>
 			<tr>
 				<td>{$t('home.lundi')}</td>
@@ -179,7 +178,6 @@
 			</tr>
 		</table>
 
-	
 		<p>
 			<a href="https://www.google.com/search?q=cadocuir+albertville+horaires" target="_blank">
 				{$t('home.horaires-exception')}
@@ -188,7 +186,7 @@
 	</div>
 </div>
 
-<Instagram></Instagram>
+<Instagram />
 
 <div id="map" />
 
@@ -196,6 +194,15 @@
 	<div class="center">
 		<H2 innerText={$t('home.informations-title')} />
 	</div>
+	<div class="block-100">
+		<p>{$t('home.informations-desc-1')}</p>
+
+		<p>{$t('home.informations-desc-2')}</p>
+		<p>{$t('home.informations-desc-3')}</p>
+		<p>{$t('home.informations-desc-4')}</p>
+		<p>{$t('home.informations-desc-5')}</p>
+	</div>
+
 	<div class="block-100">
 		<p>{$t('home.informations-desc-1')}</p>
 
