@@ -203,14 +203,6 @@
 		<p>{$t('home.informations-desc-5')}</p>
 	</div>
 
-	<div class="block-100">
-		<p>{$t('home.informations-desc-1')}</p>
-
-		<p>{$t('home.informations-desc-2')}</p>
-		<p>{$t('home.informations-desc-3')}</p>
-		<p>{$t('home.informations-desc-4')}</p>
-		<p>{$t('home.informations-desc-5')}</p>
-	</div>
 </div>
 
 <style lang="scss">
