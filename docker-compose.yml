@@ -20,8 +20,8 @@ services:
       - "traefik.http.services.cadocuir.loadbalancer.server.port=3000"
       - "traefik.http.routers.cadocuir-secure.middlewares=cadocuir-redirect"
       - "traefik.http.routers.cadocuir.middlewares=cadocuir-redirect"
-      - "traefik.http.middlewares.cadocuir-redirect.redirectregex.regex=^https?://cadocuir\\.fr/(.*)"
-      - "traefik.http.middlewares.cadocuir-redirect.redirectregex.replacement=https://www.cadocuir.fr/$${1}"
+      - "traefik.http.middlewares.cadocuir-redirect.redirectregex.regex=^https?://cadocuir\\.com/(.*)"
+      - "traefik.http.middlewares.cadocuir-redirect.redirectregex.replacement=https://www.cadocuir.com/$${1}"
       - "traefik.http.middlewares.cadocuir-redirect.redirectregex.permanent=false"
     volumes:
       - ./uploads:/app/uploads
