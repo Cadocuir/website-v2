@@ -1,5 +1,5 @@
 <script>
-	import { setting_ldm_store } from '$lib/settings/detailMode.js';
+
 	import H1 from '$lib/components/H1.svelte';
 	import H2 from '$lib/components/H2.svelte';
 	import { t } from '$lib/translations';
