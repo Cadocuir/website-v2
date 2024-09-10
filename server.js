@@ -16,7 +16,7 @@ middlewares(app, import.meta.dirname);
 
 app.use(handler);
 
-cron.schedule('0 0 2 * * *', async () => {
+cron.schedule(`0 0 ${Math.floor(Math.random() * 8)} * * *`, async () => {
     fetchInstagramData()
 });
 
