@@ -41,6 +41,9 @@ importers:
       puppeteer-extra-plugin-stealth:
         specifier: ^2.11.2
         version: 2.11.2(puppeteer-extra@3.3.6(puppeteer-core@23.3.0)(puppeteer@23.3.0))
+      set-cookie-parser:
+        specifier: ^2.7.0
+        version: 2.7.0
       sharp:
         specifier: ^0.33.5
         version: 0.33.5

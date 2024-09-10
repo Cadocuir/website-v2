@@ -40,6 +40,7 @@
 		"puppeteer": "^23.3.0",
 		"puppeteer-extra": "^3.3.6",
 		"puppeteer-extra-plugin-stealth": "^2.11.2",
+		"set-cookie-parser": "^2.7.0",
 		"sharp": "^0.33.5",
 		"sveltekit-i18n": "^2.2.2",
 		"swiper": "^11.1.12",
